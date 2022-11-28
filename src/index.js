@@ -7,6 +7,11 @@ const BASE_URL = 'https://pixabay.com/api/';
 const API_KEY = '19287883-8248a4cfa378b2f4de664e52e';
 let searchQuery;
 let page = 1;
+const simpleLightbox = new SimpleLightbox('.gallery a', {
+  captionPosition: 'bottom',
+  captionDelay: 250,
+  enableKeyboard: true,
+});
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -41,11 +46,7 @@ async function onSearch(event) {
         createMarkup(cards.data.hits)
       );
       refs.loadMoreBtn.classList.remove('hidden');
-      simpleLightbox = new SimpleLightbox('.gallery a', {
-        captionPosition: 'bottom',
-        captionDelay: 250,
-        enableKeyboard: true,
-      }).refresh();
+      simpleLightbox.refresh();
     } else {
       Notiflix.Notify.warning(
         'Sorry, there are no images matching your search query. Please try again.'
@@ -116,7 +117,7 @@ async function loadMore() {
         createMarkup(cards.data.hits)
       );
       refs.loadMoreBtn.classList.remove('hidden');
-      SimpleLightbox = new SimpleLightbox('.gallery a').refresh();
+      simpleLightbox.refresh();
     } else {
       Notiflix.Notify.warning(
         "We're sorry, but you've reached the end of search results."
