@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 import Notiflix from 'notiflix';
-import SimpleLightbox from 'SimpleLightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const BASE_URL = 'https://pixabay.com/api/';
@@ -41,7 +41,7 @@ async function onSearch(event) {
         createMarkup(cards.data.hits)
       );
       refs.loadMoreBtn.classList.remove('hidden');
-      SimpleLightbox = new SimpleLightbox('.gallery a', {
+      simpleLightbox = new SimpleLightbox('.gallery a', {
         captionPosition: 'bottom',
         captionDelay: 250,
         enableKeyboard: true,
